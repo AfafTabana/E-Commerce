@@ -285,9 +285,12 @@ h1 {
   }
 
   #products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px;
+    
   }
 
   .product {
@@ -296,6 +299,7 @@ h1 {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 300px;
   }
 
   .product:hover {

@@ -1,3 +1,39 @@
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+
+fetch('../jsonformatter.json')
+  .then(res => res.json())
+  .then(data => {
+    const product = data.products.find(p => p.id == productId);
+    if (!product) {
+      showToast("Product not found."); 
+      return;
+    }
+    addtochart(product);
+  });
+
+  function addtochart(product){
+  
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+    const exists = cart.some(item => item.id == product.id);
+    if (exists) {
+      showToast("This item is already in your cart.");
+      return; 
+    }
+    cart.push({
+      id:       product.id,
+      title:    product.title,
+      unitPrice: product.price,
+      quantity: 1
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.reload();
+  }
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const cartBody = document.getElementById('cart-body');
   

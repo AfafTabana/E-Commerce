@@ -62,8 +62,12 @@ function displayProducts(products) {
           <p class="price">$${p.price}</p>
           <p class="category">${p.category}</p>
           <p class="rating"> Rating:${p.rating}</p>
+          <a href="Cart.html?id=${p.id}" class="product-link price">🛒</a>
         </div>
-      </div>
+        </div>
+          
+     
+      
     `;
   }
   placeholder.innerHTML = out;
